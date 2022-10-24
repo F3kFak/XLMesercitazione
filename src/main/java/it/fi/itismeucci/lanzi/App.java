@@ -27,12 +27,23 @@ public class App {
 
         Classe classe = new Classe(5, "CIA", "06-TE", lista);
         XmlMapper xmlMapper = new XmlMapper();
-        try {
+        
+        /* try {
             xmlMapper.writeValue(new File("simple_bean.xml"), classe);
         } catch (Exception e) {
             // TODO: handle exception
         }
-           
+        */
+        try {
+            String xmlstringa = xmlMapper.writeValueAsString(classe);
+            System.out.println(xmlstringa);
+
+            Classe c = xmlMapper.readValue(xmlstringa, Classe.class);
+            System.out.println(c.getAula());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
 
     }
 }
